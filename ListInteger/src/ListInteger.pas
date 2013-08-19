@@ -12,11 +12,9 @@ type
   private
     FList: array of Integer;
     FCount: Integer;
-    FCapacity: Integer;
     function Get(Index: Integer): Integer;
     procedure Put(Index: Integer; const Value: Integer);
     procedure SetCount(const NewCount: Integer);
-    procedure SetCapacity(const Value: Integer);
   public
     constructor Create();
     destructor Destroy; override;
@@ -26,7 +24,6 @@ type
     procedure Delete(Index: Integer);
     class procedure Error(const Msg: string; Data: Integer); virtual;
     function IndexOf(Value: Integer): Integer;
-    property Capacity: Integer read FCapacity write SetCapacity;
     property Count: Integer read FCount;// write SetCount;
     property Items[Index: Integer]: Integer read Get write Put; default;
   end;
@@ -36,21 +33,19 @@ implementation
 const
   MAX_LIST_SIZE = Maxint div 16;
 
-  LIST_CAPACITY_ERROR = 'List capacity out of bounds (%d)';
   LIST_COUNT_ERROR = 'List count out of bounds (%d)';
   LIST_INDEX_ERROR = 'List index out of bounds (%d)';
-
 
 { TListInteger }
 
 function TListInteger.Add(const I: Integer): Integer;
 var
-  L: Integer;
+  ListLength: Integer;
 begin
   Result := FCount;
-  L := Length(FList);
-  SetLength(FList, L + 1);
-  FList[L] := I;
+  ListLength := Length(FList);
+  SetLength(FList, ListLength + 1);
+  FList[ListLength] := I;
   SetCount(Result + 1);
 end;
 
@@ -124,20 +119,10 @@ begin
   FList[Index] := Value;
 end;
 
-procedure TListInteger.SetCapacity(const Value: Integer);
-begin
-  if FCount > Value then
-    Error(LIST_CAPACITY_ERROR, Value)
-  else
-    FCapacity := Value;
-end;
-
 procedure TListInteger.SetCount(const NewCount: Integer);
 begin
   if (NewCount < 0) or (NewCount > MAX_LIST_SIZE) then
     Error(LIST_COUNT_ERROR, NewCount);
-  if NewCount > FCapacity then
-    SetCapacity(NewCount);
 
 //  if NewCount > FCount then
 //    FillChar(FList[FCount], (NewCount - FCount) * SizeOf(Pointer), 0)
