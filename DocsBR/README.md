@@ -25,3 +25,32 @@ begin
   CPF.IsValid()
 end;
 ```
+
+# "Left Side Cannot Be Assigned To"
+
+The usage of a Record Delphi type as a Property in a Class declaration will produce a compile time error while trying to assign a value to a record's field.
+
+But with implict method in TCPF/TCNPJ class the code bellow works. :D
+
+```delphi
+type
+  TLeftSide = class
+  private
+    FCPF: TCPF;
+  public
+    property CPF: TCPF read FCPF write FCPF;
+  end;
+
+procedure Test.TestLeftSideCannotAssignedTo;
+var
+  LeftSide: TLeftSide;
+begin
+  LeftSide := TLeftSide.Create();
+  try
+    LeftSide.CPF := '00000000000';
+    CheckFalse(LeftSide.CPF.IsValid, 'Should reject invalid CPF "00000000000"');
+  finally
+    LeftSide.Free();
+  end;
+end;
+```
