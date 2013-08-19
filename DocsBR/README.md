@@ -1,6 +1,6 @@
 # Usage
 
-This way to use is the same for both CNPJ/CPF, so only one of them is documented below.
+This way to use is the same for both CNPJ/CPF, so only CPF is documented below.
 
 ```delphi
 var
