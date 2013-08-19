@@ -21,7 +21,7 @@ begin
   CPF.formatted
   
   
-  // Check if a CPF is valid
+  // Check if CPF is valid
   CPF.IsValid()
 end;
 ```
