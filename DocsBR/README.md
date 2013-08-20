@@ -1,3 +1,5 @@
+Basically it's a [Tiny Types](http://darrenhobbs.com/2007/04/11/tiny-types/).
+
 # Usage
 
 This way to use is the same for both CNPJ/CPF, so only CPF is documented below.
