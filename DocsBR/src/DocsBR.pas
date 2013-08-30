@@ -6,25 +6,25 @@ type
   TCNPJ = record
   private
     FUnformatted: string;
-    FFormatted: string;
+    function GetFormatted: string;
   public
     class operator Implicit(const CNPJ: string): TCNPJ;
     class operator Implicit(const CNPJ: TCNPJ): string;
     function IsValid(): Boolean;
     property Unformatted: string read FUnformatted;
-    property Formatted: string read FFormatted;
+    property Formatted: string read GetFormatted;
   end;
 
   TCPF = record
   private
     FUnformatted: string;
-    FFormatted: string;
+    function GetFormatted: string;
   public
     class operator Implicit(const CPF: string): TCPF;
     class operator Implicit(const CPF: TCPF): string;
     function IsValid(): Boolean;
     property Unformatted: string read FUnformatted;
-    property Formatted: string read FFormatted;
+    property Formatted: string read GetFormatted;
   end;
 
 implementation
@@ -44,22 +44,16 @@ begin
   end;
 end;
 
-function FormatCNPJ(const CNPF: string): string;
-begin
-  Result := MaskUtils.FormatMaskText('00.000.000/0000-00;0; ', CNPF);
-end;
-
-function FormatCPF(const CPF: string): string;
-begin
-  Result := MaskUtils.FormatMaskText('000.000.000-00;0; ', CPF);
-end;
-
 { TCNPJ }
 
 class operator TCNPJ.Implicit(const CNPJ: string): TCNPJ;
 begin
   Result.FUnformatted := Clear(CNPJ);
-  Result.FFormatted := FormatCNPJ(CNPJ);
+end;
+
+function TCNPJ.GetFormatted: string;
+begin
+  Result := MaskUtils.FormatMaskText('00.000.000/0000-00;0; ', FUnformatted);
 end;
 
 class operator TCNPJ.Implicit(const CNPJ: TCNPJ): string;
@@ -125,7 +119,11 @@ end;
 class operator TCPF.Implicit(const CPF: string): TCPF;
 begin
   Result.FUnformatted := Clear(CPF);
-  Result.FFormatted := FormatCPF(Result.FUnformatted);
+end;
+
+function TCPF.GetFormatted: string;
+begin
+  Result := MaskUtils.FormatMaskText('000.000.000-00;0; ', FUnformatted);
 end;
 
 class operator TCPF.Implicit(const CPF: TCPF): string;
