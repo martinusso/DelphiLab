@@ -1,0 +1,40 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{5671eb2e-4d81-4e47-bd5f-201dd4a8238b}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="UnusedUnits">
+    <MSBuild Projects="Src\UnusedUnits.dproj" Targets="" />
+  </Target>
+  <Target Name="UnusedUnits:Clean">
+    <MSBuild Projects="Src\UnusedUnits.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="UnusedUnits:Make">
+    <MSBuild Projects="Src\UnusedUnits.dproj" Targets="Make" />
+  </Target>
+  <Target Name="UnusedUnitsTests">
+    <MSBuild Projects="Test\UnusedUnitsTests.dproj" Targets="" />
+  </Target>
+  <Target Name="UnusedUnitsTests:Clean">
+    <MSBuild Projects="Test\UnusedUnitsTests.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="UnusedUnitsTests:Make">
+    <MSBuild Projects="Test\UnusedUnitsTests.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="UnusedUnits;UnusedUnitsTests" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="UnusedUnits:Clean;UnusedUnitsTests:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="UnusedUnits:Make;UnusedUnitsTests:Make" />
+  </Target>
+</Project>
