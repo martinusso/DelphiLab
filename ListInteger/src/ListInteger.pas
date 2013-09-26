@@ -107,6 +107,7 @@ begin
   Result := 0;
   while (Result < FCount) and (FList[Result] <> Value) do
     Inc(Result);
+
   if Result = FCount then
     Result := -1;
 end;
@@ -124,12 +125,6 @@ begin
   if (NewCount < 0) or (NewCount > MAX_LIST_SIZE) then
     Error(LIST_COUNT_ERROR, NewCount);
 
-//  if NewCount > FCount then
-//    FillChar(FList[FCount], (NewCount - FCount) * SizeOf(Pointer), 0)
-//  else begin
-//    for I := FCount - 1 downto NewCount do
-//      Delete(I);
-//  end;
   FCount := NewCount;
 end;
 
