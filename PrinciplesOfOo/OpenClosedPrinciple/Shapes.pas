@@ -4,7 +4,7 @@ interface
 
 type
   IHasArea = interface
-    ['{7CDC63F7-1903-4E02-B19A-50037EB1E0D3}']
+  ['{7CDC63F7-1903-4E02-B19A-50037EB1E0D3}']
     function GetArea: Extended;
     property Area: Extended read GetArea;
   end;
@@ -13,8 +13,8 @@ type
   private
     FWidth: Extended;
     FHeight: Extended;
-  public
     function GetArea: Extended;
+  public
     property Width: Extended read FWidth write FWidth;
     property Height: Extended read FHeight write FHeight;
   end;
@@ -22,8 +22,8 @@ type
   TCircle = class(TInterfacedObject, IHasArea)
   private
     FRadius: Extended;
-  public
     function GetArea: Extended;
+  public
     property Radius: Extended read FRadius write FRadius;
   end;
 
