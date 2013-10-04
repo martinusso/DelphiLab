@@ -43,14 +43,13 @@ var
   UnusedUnits: TStrings;
 begin
   UnusedUnits := TStringList.Create();
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\Folder1\file_folder1_1.pas');
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\Folder1\file_folder1_2.pas');
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\Folder1\Folder2\file_folder2_1.pas');
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\Folder1\Folder2\file_folder2_2.pas');
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\test1.pas');
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\test2.pas');
-  UnusedUnits.Add('D:\Dev\DelphiLab\UnusedUnits\Bin\Temp\test3.pas');
-
+  UnusedUnits.Add(FCreateTestFiles.FileFolder1_1);
+  UnusedUnits.Add(FCreateTestFiles.FileFolder1_2);
+  UnusedUnits.Add(FCreateTestFiles.FileFolder2_1);
+  UnusedUnits.Add(FCreateTestFiles.FileFolder2_2);
+  UnusedUnits.Add(FCreateTestFiles.Test1);
+  UnusedUnits.Add(FCreateTestFiles.Test2);
+  UnusedUnits.Add(FCreateTestFiles.Test3);
 
   CheckEqualsString(FListUnusedUnits.UnusedUnits.Text, UnusedUnits.Text);
 end;
