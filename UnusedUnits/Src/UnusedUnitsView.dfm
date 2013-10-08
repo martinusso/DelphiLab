@@ -252,7 +252,5 @@ object UnusedUnitsForm: TUnusedUnitsForm
       end>
     TabOrder = 1
     ViewStyle = vsReport
-    ExplicitLeft = -29
-    ExplicitTop = 138
   end
 end

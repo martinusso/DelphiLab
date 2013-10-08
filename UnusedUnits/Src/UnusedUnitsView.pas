@@ -64,10 +64,10 @@ begin
 end;
 
 procedure TUnusedUnitsForm.SearchProjectDirectoryClick(Sender: TObject);
-{$WARN SYMBOL_PLATFORM OFF}
 var
-  FolderDialog: TFileOpenDialog;
+  FolderDialog: TCustomFileDialog;
 begin
+  {$WARN SYMBOL_PLATFORM OFF}
   FolderDialog := TFileOpenDialog.Create(Self);
   try
     FolderDialog.Options := FolderDialog.Options + [fdoPickFolders];
@@ -76,14 +76,14 @@ begin
   finally
     FolderDialog.Free;
   end;
-{$WARN SYMBOL_PLATFORM ON}
+  {$WARN SYMBOL_PLATFORM ON}
 end;
 
 procedure TUnusedUnitsForm.SearchProjectFileClick(Sender: TObject);
-{$WARN SYMBOL_PLATFORM OFF}
 var
-  FolderDialog: TFileOpenDialog;
+  FolderDialog: TCustomFileDialog;
 begin
+  {$WARN SYMBOL_PLATFORM OFF}
   FolderDialog := TFileOpenDialog.Create(Self);
   try
     FolderDialog.Options := FolderDialog.Options + [fdoFileMustExist];
@@ -95,7 +95,7 @@ begin
   finally
     FolderDialog.Free;
   end;
-{$WARN SYMBOL_PLATFORM ON}
+  {$WARN SYMBOL_PLATFORM ON}
 end;
 
 end.
