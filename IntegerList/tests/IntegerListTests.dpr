@@ -1,4 +1,4 @@
-program ListIntegerTest;
+program IntegerListTests;
 
 {$IFDEF CONSOLE_TESTRUNNER}
 {$APPTYPE CONSOLE}
@@ -9,8 +9,8 @@ uses
   TestFramework,
   GUITestRunner,
   TextTestRunner,
-  ListInteger in '..\src\ListInteger.pas',
-  TestListInteger in 'TestListInteger.pas';
+  IntegerList in '..\src\IntegerList.pas',
+  ListIntegerTest in 'ListIntegerTest.pas';
 
 {$R *.RES}
 

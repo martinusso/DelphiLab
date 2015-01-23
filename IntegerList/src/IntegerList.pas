@@ -1,4 +1,4 @@
-unit ListInteger;
+unit IntegerList;
 
 interface
 
@@ -8,7 +8,7 @@ uses
 type
   EListError = class(Exception);
 
-  TListInteger = class
+  TIntegerList = class
   private
     FList: array of Integer;
     FCount: Integer;
@@ -36,9 +36,9 @@ const
   LIST_COUNT_ERROR = 'List count out of bounds (%d)';
   LIST_INDEX_ERROR = 'List index out of bounds (%d)';
 
-{ TListInteger }
+{ TIntegerList }
 
-function TListInteger.Add(const I: Integer): Integer;
+function TIntegerList.Add(const I: Integer): Integer;
 var
   ListLength: Integer;
 begin
@@ -49,18 +49,18 @@ begin
   SetCount(Result + 1);
 end;
 
-procedure TListInteger.Clear;
+procedure TIntegerList.Clear;
 begin
   FillChar(FList, SizeOf(FList), 0);
   SetCount(0);
 end;
 
-constructor TListInteger.Create;
+constructor TIntegerList.Create;
 begin
   Self.Clear();
 end;
 
-procedure TListInteger.Delete(Index: Integer);
+procedure TIntegerList.Delete(Index: Integer);
 begin
   if Index > High(FList) then Exit;
   if Index < Low(FList) then Exit;
@@ -76,13 +76,13 @@ begin
   SetCount(Length(FList));
 end;
 
-destructor TListInteger.Destroy;
+destructor TIntegerList.Destroy;
 begin
   Self.Clear();
   inherited;
 end;
 
-class procedure TListInteger.Error(const Msg: string; Data: Integer);
+class procedure TIntegerList.Error(const Msg: string; Data: Integer);
 
   function ReturnAddr: Pointer;
   asm
@@ -94,7 +94,7 @@ begin
 end;
 
 
-function TListInteger.Get(Index: Integer): Integer;
+function TIntegerList.Get(Index: Integer): Integer;
 begin
   if (Index < 0) or (Index >= FCount) then
     Error(LIST_INDEX_ERROR, Index);
@@ -102,7 +102,7 @@ begin
   Result := FList[Index];
 end;
 
-function TListInteger.IndexOf(Value: Integer): Integer;
+function TIntegerList.IndexOf(Value: Integer): Integer;
 begin
   Result := 0;
   while (Result < FCount) and (FList[Result] <> Value) do
@@ -112,7 +112,7 @@ begin
     Result := -1;
 end;
 
-procedure TListInteger.Put(Index: Integer; const Value: Integer);
+procedure TIntegerList.Put(Index: Integer; const Value: Integer);
 begin
   if (Index < 0) or (Index >= FCount) then
     Error(LIST_INDEX_ERROR, Index);
@@ -120,7 +120,7 @@ begin
   FList[Index] := Value;
 end;
 
-procedure TListInteger.SetCount(const NewCount: Integer);
+procedure TIntegerList.SetCount(const NewCount: Integer);
 begin
   if (NewCount < 0) or (NewCount > MAX_LIST_SIZE) then
     Error(LIST_COUNT_ERROR, NewCount);

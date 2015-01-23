@@ -1,14 +1,14 @@
-unit TestListInteger;
+unit ListIntegerTest;
 
 interface
 
 uses
-  TestFramework, ListInteger;
+  TestFramework, IntegerList;
   
 type
   TestTListInteger = class(TTestCase)
   strict private
-    FListInteger: TListInteger;
+    FListInteger: TIntegerList;
   public
     procedure SetUp; override;
     procedure TearDown; override;
@@ -23,7 +23,7 @@ implementation
 
 procedure TestTListInteger.SetUp;
 begin
-  FListInteger := TListInteger.Create;
+  FListInteger := TIntegerList.Create;
 end;
 
 procedure TestTListInteger.TearDown;
