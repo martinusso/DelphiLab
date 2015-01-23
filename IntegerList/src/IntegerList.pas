@@ -24,7 +24,7 @@ type
     procedure Delete(Index: Integer);
     class procedure Error(const Msg: string; Data: Integer); virtual;
     function IndexOf(Value: Integer): Integer;
-    property Count: Integer read FCount;// write SetCount;
+    property Count: Integer read FCount;
     property Items[Index: Integer]: Integer read Get write Put; default;
   end;
 
@@ -70,7 +70,7 @@ begin
     SetCount(Length(FList));
     Exit;
   end;
-  //Finalize(FList[Index]);
+
   System.Move(FList[Index +1], FList[Index], (Length(FList) - Index -1) * SizeOf(string) + 1);
   SetLength(FList, Length(FList) - 1);
   SetCount(Length(FList));
