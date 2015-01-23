@@ -1,8 +1,16 @@
-#DelphiLab
+DelphiLab
+=========
 
 Cool Things with Delphi. Something to help me in Delphi
 
-## UnusedUnits
+IntegerList
+-----------
+
+To use Integer's List without generics (older versions).
+
+
+UnusedUnits
+-----------
 
 Finding unused (obsolete) units in a Delphi's project file (.dpr).
 
